@@ -64,3 +64,6 @@ Python 3.7+, Django 2.2+, DRF, JWT, Docker, Nginx
 infra/.env.template  
 описание команды для заполнения базы данными  
 `cd api_yamdb && python manage.py loaddata ../infra/fixtures.json`  
+
+### Автор:
+Семенюк Александр [belinskii1](https://github.com/Belinskii1)
