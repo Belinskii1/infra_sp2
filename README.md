@@ -1,23 +1,63 @@
-pi_yamdb
-Проект представляет собой API сервиса отзывов о фильмах, книгах и музыке. Зарегистрированные пользователи могут оставлять отзывы (Review) на произведения (Title). Произведения делятся на категории (Category): «Книги», «Фильмы», «Музыка». Список категорий может быть расширен администратором.
+#Учебный проект 15 спринта. Docker, контейнеризация.
+
+##Cтек технологий:
+Python 3.7+, Django 2.2+, DRF, JWT, Docker, Nginx
 
 
-Установка
-Перейти в корневую директорию проекта и активировать виртуальное окружение
+##Запуск проекта:
+Клонировать репозиторий и перейти в него в командной строке:
 
-$ source venv/Scripts/activate
-Установить requirements
+git clone https://github.com/Belinskii1/infra_sp2.git
+cd api_yamdb/
+Cоздать и активировать виртуальное окружение:
 
-$ pip install requirements.txt
-Запуск сервера разработчика
+python3 -m venv env
+source env/bin/activate
+python3 -m pip install --upgrade pip
+Установить зависимости из файла requirements.txt:
 
-$ python manage.py runserver
-Проверка работоспособности
-Примеры запросов к api_yamdb:
+pip install -r requirements.txt
 
-GET http://127.0.0.1:8000/api/v1/titles/
+###Запустить приложение в контейнерах:
 
-http://127.0.0.1:8000/redoc/
-Для изменения содержания базы данных монжо воспользоваться админкой Django:
+из директории infra/
 
-http://127.0.0.1:8000/admin/
+docker-compose up -d --build
+Выполнить миграции:
+
+из директории infra/
+
+docker-compose exec web python manage.py migrate
+
+###Создать суперпользователя:
+
+из директории infra/
+
+docker-compose exec web python manage.py createsuperuser
+
+###Собрать статику:
+
+из директории infra/
+
+docker-compose exec web python manage.py collectstatic --no-input
+
+###Остановить приложение в контейнерах:
+
+из директории infra/
+
+docker-compose down -v
+
+###Запуск pytest:
+
+при запущенном виртуальном окружении
+
+cd infra_sp2 && pytest
+
+###Документация API с примерами:
+/redoc/
+шаблон наполнения env-файла
+см.
+
+infra/.env.template
+описание команды для заполнения базы данными
+cd api_yamdb && python manage.py loaddata ../infra/fixtures.json
