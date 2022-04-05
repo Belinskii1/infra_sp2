@@ -95,10 +95,7 @@ class Title(models.Model):
         verbose_name='Категория'
     )
     description = models.TextField(default='', verbose_name='Описание')
-    genre = models.ManyToManyField(
-        Genre,
-        null=True
-    )
+    genre = models.ManyToManyField(Genre)
     pub_date = models.DateTimeField(
         auto_now_add=True,
         verbose_name='Дата публикации'
