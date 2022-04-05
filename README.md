@@ -58,9 +58,9 @@ Python 3.7+, Django 2.2+, DRF, JWT, Docker, Nginx
 `cd infra_sp2 && pytest`
 
 **Документация API с примерами:**
-/redoc/
-шаблон наполнения env-файла
-см.
-infra/.env.template
-описание команды для заполнения базы данными
-`cd api_yamdb && python manage.py loaddata ../infra/fixtures.json`
+/redoc/  
+шаблон наполнения env-файла  
+см.  
+infra/.env.template  
+описание команды для заполнения базы данными  
+`cd api_yamdb && python manage.py loaddata ../infra/fixtures.json`  
